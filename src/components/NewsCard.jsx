@@ -1,5 +1,6 @@
 import Card from './Card'
 import dayjs from "dayjs"
+import { ArrowOutwardOutlined } from '@mui/icons-material'
 
 const getWebsite = (string) => {
   return string.split('https://').pop().split('/')[0]
@@ -24,14 +25,19 @@ const NewsCard = ({ article, titleSlicer, descSlicer }) => {
         src={article.urlToImage}
         className="w-full h-64 object-cover"
       />
-      <Card styleClass="my-4 px-4 text-left h-full">
+      <Card styleClass="p-4 text-left h-full bg-[#F9F9F9]">
         <p className="flex gap-2 items-center text-sm font-medium">
           <img
             src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&size=16&fallback_opts=TYPE,SIZE,URL&url=http://${ getWebsite(article.url) }`}
             className="h-6"/>
           {article.source.name}</p>
         <p className="italic text-sm mb-2">
-          {dayjs(article.publishedAt).format('ddd, DD/MM/YYYY HH:mm')} • {article.author ? containLink(article?.author, article.source.name) : 'anonymous'}
+          {
+            dayjs(article.publishedAt).format('ddd, DD/MM/YYYY HH:mm')} • {
+              article.author ?
+                stringSlice(containLink(article?.author, article.source.name), 25) :
+                'anonymous'
+              }
         </p>
         <p className="font-bold text-xl h-24">
           <a href={article.url} className='hover:cursor-pointer hover:text-[#7404FA]' target="_blank">
@@ -41,6 +47,7 @@ const NewsCard = ({ article, titleSlicer, descSlicer }) => {
         <p className='h-28 text-sm'>{stringSlice(article.description, descSlicer ?? 300)}</p>
         
         <a href={article.url} className='text-sm flex w-full justify-end hover:cursor-pointer hover:text-[#7404FA]' target="_blank">
+          <ArrowOutwardOutlined sx={{ fontSize: 16 }} />
           See more
         </a>
       </Card>

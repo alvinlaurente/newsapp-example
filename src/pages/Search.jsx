@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react";
-import { NewsCategory } from "../components"
+import { NewsCategory, Pagination } from "../components"
 import { useSearchParams } from "react-router-dom"
 
 const Search = () => {
   const [params] = useSearchParams()
   const [limit, setLimit] = useState(12)
-  const [result, setResult] = useState(0)
+  const [results, setResults] = useState(0)
 
   const setTotalResult = (totalResult) => {
-    setResult(totalResult)
+    setResults(totalResult)
   }
 
   const [page, setPage] = useState(0)
@@ -18,12 +18,10 @@ const Search = () => {
       setLimit(params?.get('limit'))
     }
     
-    setPage(Math.ceil(result / limit))
+    setPage(Math.ceil(results / limit))
   
-    return () => {
-      console.log('done')
-    }
-  }, [limit])
+    return
+  }, [params])
   
 
   return (
@@ -32,16 +30,22 @@ const Search = () => {
         Show search from query:
         <span className="font-bold"> { params.get('q') }</span>
       </p>
-      <p className="text-sm">
-        Showing <strong>{limit}</strong> results from <strong>{ result }</strong>
+      <p className="text-sm mb-4">
+        Showing <strong>{limit}</strong> results. Found <strong>{ Number(results).toLocaleString('id-ID') }</strong> results.
       </p>
-      {page}
+
+      <Pagination
+        result={limit}
+        totalResult={results}
+        page={params?.get('page') ?? 1}
+      />
       <NewsCategory
         topic={params.get('q')}
         showTitle={false}
         showSortBy={false}
         sortBy='relevancy'
         limit={params?.get('limit') ?? 12}
+        page={params?.get('page') ?? 1}
         cols={4}
         showMore={false}
         titleSlicer={90}

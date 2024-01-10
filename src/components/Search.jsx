@@ -8,7 +8,8 @@ const Search = () => {
 
   const searchQuery = (event) => {
     if (event.key === 'Enter') {
-      navigateTo(`/search?q=${query}`)
+      navigateTo(`/search?q=${query}&limit=12&page=1`)
+      setQuery('')
     }
   }
 

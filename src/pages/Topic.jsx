@@ -9,7 +9,8 @@ const Topic = () => {
         topic={topic}
         showTitle={false}
         sortBy='relevancy'
-        limit={9}
+        page={1}
+        limit={12}
         cols={4}
         showMore={false}
         titleSlicer={90}
@@ -20,7 +21,8 @@ const Topic = () => {
         topic={topic}
         showTitle={false}
         sortBy='popularity'
-        limit={9}
+        page={1}
+        limit={12}
         cols={4}
         showMore={false}
         titleSlicer={90}
@@ -31,7 +33,8 @@ const Topic = () => {
         topic={topic}
         showTitle={false}
         sortBy='publishedAt'
-        limit={9}
+        page={1}
+        limit={12}
         cols={4}
         showMore={false}
         titleSlicer={90}

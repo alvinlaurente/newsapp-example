@@ -26,6 +26,7 @@ const Everything = () => {
             topic={topic}
             showSortBy={false}
             sortBy='publishedAt'
+            page={1}
             limit={3}
             cols={3}
           />
