@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { default as base } from "../apis/base"
 import { useQuery } from "react-query"
 import { NewsCard } from '../components'
@@ -5,8 +6,13 @@ import { Link } from 'react-router-dom'
 import { Chip, Stack } from '@mui/material'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-const NewsCategory = ({topic, limit, sortBy, cols, titleSlicer, descSlicer, showTitle, showMore, showSortBy }) => {
-  const API_EVERYTHING = `everything?apiKey=0b6b12a98ec441ef84573a3e211cda14&pageSize=${limit}&sortBy=${sortBy}&q=`
+const NewsCategory = ({
+    topic, limit, sortBy,
+    titleSlicer, descSlicer,
+    showTitle, showMore, showSortBy,
+    totalResult = () => {}
+  }) => {
+  const API_EVERYTHING = `everything?apiKey=f1711599a4b84ff697cf65e5d7b5fe2c&pageSize=${limit}&sortBy=${sortBy}&q=`
   const API_CATEGORY = API_EVERYTHING + topic
 
   const getNews = async () => {
@@ -14,6 +20,10 @@ const NewsCategory = ({topic, limit, sortBy, cols, titleSlicer, descSlicer, show
   }
 
   const { data } = useQuery('getNews_'+ topic + '_' + sortBy, getNews)
+
+  if (data?.totalResults) {
+    totalResult(data.totalResults)
+  }
   return (
     <>
       <Stack direction="row" spacing={1}>
@@ -40,9 +50,9 @@ const NewsCategory = ({topic, limit, sortBy, cols, titleSlicer, descSlicer, show
           </Link>
         }
       </Stack>
-      <div className={`grid grid-cols-${cols} gap-4 my-4`}>
+      <div className={`grid grid-cols-3 gap-4 my-4`}>
         {data?.articles.map((article) => (
-          <NewsCard article={article} titleSlicer={titleSlicer} descSlicer={descSlicer} />
+          <NewsCard key={article.url} article={article} titleSlicer={titleSlicer} descSlicer={descSlicer} />
         ))}
       </div>
     </>

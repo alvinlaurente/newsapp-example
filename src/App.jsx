@@ -5,7 +5,7 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import { default as Main } from './layout/Main';
-import { Everything, Topic } from './pages';
+import { Everything, Topic, Search } from './pages';
 
 const queryClient = new QueryClient()
 
@@ -24,6 +24,10 @@ function App() {
         {
           path: '/topic/:topic',
           element: <Topic />
+        },
+        {
+          path: '/search',
+          element: <Search />
         },
         {
           path: '*',

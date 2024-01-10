@@ -3,18 +3,18 @@ import { NewsCategory } from "../components"
 const Everything = () => {
   const topics = [
     'business',
-    'entertainment',
-    'game',
-    'sport',
-    'health',
-    'economy',
-    'politic',
-    'technology',
-    'culinary',
-    'indonesia',
-    'travel',
-    'cars',
-    'jobs'
+    // 'entertainment',
+    // 'game',
+    // 'sport',
+    // 'health',
+    // 'economy',
+    // 'politic',
+    // 'technology',
+    // 'culinary',
+    // 'indonesia',
+    // 'travel',
+    // 'cars',
+    // 'jobs'
   ]
 
   return (
@@ -22,6 +22,7 @@ const Everything = () => {
       {
         topics.map((topic) => (
           <NewsCategory
+            key={topic}
             topic={topic}
             showSortBy={false}
             sortBy='publishedAt'
