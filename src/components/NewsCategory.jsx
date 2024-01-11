@@ -16,11 +16,11 @@ const NewsCategory = ({
     display: 'grid',
     gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
   };
-  const API_KEY = [
-    'f1711599a4b84ff697cf65e5d7b5fe2c',
-    '0b6b12a98ec441ef84573a3e211cda14'
-  ]
-  const API_EVERYTHING = `everything?apiKey=0237ed02e0434049af1af3a2f1000bde&page=${page}&pageSize=${limit}&sortBy=${sortBy}&q=`
+  // const API_KEY = [
+  //   'f1711599a4b84ff697cf65e5d7b5fe2c',
+  //   '0b6b12a98ec441ef84573a3e211cda14'
+  // ]
+  const API_EVERYTHING = `everything?apiKey=14dd7a780aba4005bd3bd70461a181d3&page=${page}&pageSize=${limit}&sortBy=${sortBy}&q=`
   const API_CATEGORY = API_EVERYTHING + topic
 
   const getNews = async () => {

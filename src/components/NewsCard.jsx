@@ -1,22 +1,6 @@
 import Card from './Card'
-import dayjs from "dayjs"
 import { ArrowOutwardOutlined } from '@mui/icons-material'
-
-const getWebsite = (string) => {
-  return string.split('https://').pop().split('/')[0]
-}
-
-const containLink = (author, source) => {
-  if (author.includes('https://')) {
-    return source
-  }
-  return author
-}
-
-const stringSlice = (text, slicer) => {
-  if (text?.length > slicer) return text.slice(0, slicer) + '...'
-  return text
-}
+import { stringSlice, containLink, getWebsite, formatDateTime } from '../utils'
 
 const NewsCard = ({ article, titleSlicer, descSlicer }) => {
   return (
@@ -30,10 +14,10 @@ const NewsCard = ({ article, titleSlicer, descSlicer }) => {
           <img
             src={`https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&size=16&fallback_opts=TYPE,SIZE,URL&url=http://${ getWebsite(article.url) }`}
             className="h-6"/>
-          {article.source.name}</p>
+          {article.source.name}
+        </p>
         <p className="italic text-sm mb-2">
-          {
-            dayjs(article.publishedAt).format('ddd, DD/MM/YYYY HH:mm')} • {
+          {formatDateTime(article.publishedAt)} • {
               article.author ?
                 stringSlice(containLink(article?.author, article.source.name), 25) :
                 'anonymous'

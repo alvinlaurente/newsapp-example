@@ -1,4 +1,4 @@
-import { NewsCategory } from "../components"
+import { NewsCategory, Headline } from "../components"
 
 const Everything = () => {
   const topics = [
@@ -19,6 +19,7 @@ const Everything = () => {
 
   return (
     <div className="container mx-auto my-4">
+      <Headline />
       {
         topics.map((topic) => (
           <NewsCategory
