@@ -1,5 +1,7 @@
 # React + Vite
 
+## This Project can only be accessed from localhost only because the API prevent access from deployment/production mode. Make sure to change the API Key from [NewsAPI](https://newsapi.org/). Change the API key in .env file
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

@@ -18,3 +18,8 @@ export const stringSlice = (text, slicer) => {
 export const formatDateTime = (dt) => {
   return dayjs(dt).format('ddd, DD/MM/YYYY HH:mm')
 } 
+
+export const pickRandomFromArray = (arr) => {
+  const random = Math.floor(Math.random() * arr.length)
+  return arr[random]
+}
