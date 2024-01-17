@@ -87,13 +87,13 @@ const Pagination = ({ result, totalResult, page }) => {
       }
       {
         Number(page) !== totalPage ?
-        <Link
-          to={`${currentLocation}${nextPage}`}
-          className='cursor-pointer hover:text-[#fff] hover:underline hover:bg-[#A790A7] px-1.5 rounded-full'
-        >
-          <KeyboardDoubleArrowRight />
-        </Link> :
-        <></>
+          <Link
+            to={`${currentLocation}${nextPage}`}
+            className='cursor-pointer hover:text-[#fff] hover:underline hover:bg-[#A790A7] px-1.5 rounded-full'
+          >
+            <KeyboardDoubleArrowRight />
+          </Link> :
+          <></>
       }
     </div>
   )

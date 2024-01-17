@@ -5,7 +5,7 @@ import {
   QueryClientProvider,
 } from 'react-query'
 import { default as Main } from './layout/Main';
-import { Everything, Topic, Search } from './pages';
+import { Everything, Topic, Search, New } from './pages';
 
 const queryClient = new QueryClient()
 
@@ -15,6 +15,10 @@ function App() {
       children: [
         {
           path: '/',
+          element: <New />
+        },
+        {
+          path: '/everything',
           element: <Everything />
         },
         {
